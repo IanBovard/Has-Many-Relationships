@@ -81,4 +81,10 @@ ON c.posts_id = p.id
 WHERE c.body LIKE '%SSL%' AND p.content LIKE '%dolorum%';
 -- STEP 12
 
-SELECT
+SELECT u.first_name "post_author_first_name", u.last_name "post_author_last_name", p.title "post_title", u.username "comment_author_username", c.body "comment_body"
+FROM comments c
+JOIN users u
+ON c.users_id = u.id
+JOIN posts p
+ON c.posts_id = p.id
+WHERE (c.body LIKE '%SSL%' OR c.body LIKE '%firewall%') AND p.content LIKE '%nemo%';

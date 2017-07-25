@@ -1,4 +1,4 @@
-/*SELECT u.id, u.username, u.first_name, u.last_name, u.created_at, u.updated_at
+SELECT u.id, u.username, u.first_name, u.last_name, u.created_at, u.updated_at
 FROM users u;
 -- STEP 1
 
@@ -60,7 +60,7 @@ SELECT  c.id, c.body "comment_body", c.created_at, c.updated_at, c.users_id, c.p
 FROM comments c
 JOIN posts p
 ON c.posts_id = p.id
-WHERE c.body LIKE '%USB%';*/
+WHERE c.body LIKE '%USB%';
 -- STEP 10
 
 SELECT p.title "post_title", u.first_name , u.last_name, c.body "comment_body"
@@ -88,3 +88,18 @@ ON c.users_id = u.id
 JOIN posts p
 ON c.posts_id = p.id
 WHERE (c.body LIKE '%SSL%' OR c.body LIKE '%firewall%') AND p.content LIKE '%nemo%';
+-- STEP 13
+
+SELECT c.id, p.id
+FROM posts p
+JOIN comments c
+ON c.posts_id = p.id
+WHERE p.created_at >'2015-07-14' :: DATE;
+ -- STEP 14
+
+SELECT u.username
+FROM users u
+JOIN comments c
+ON u.id = c.users_id
+WHERE c.body LIKE '%programming%';
+-- STEP 15
